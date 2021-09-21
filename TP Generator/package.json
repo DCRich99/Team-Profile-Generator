@@ -1,7 +1,7 @@
 {
   "name": "TP Generator",
   "version": "1.0.0",
-  "description": "Team Profile Generator"
+  "description": "Team Profile Generator",
   "main": "app.js",
   "directories": {
     "lib": "lib",
