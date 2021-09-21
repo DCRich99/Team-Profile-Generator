@@ -7,7 +7,7 @@ const Manager = require("./lib/manager.js");
 var uniqueId = 0;
 var teamArray = [];
 
-// will need to have separate inquirer prompts depending on role etc. 
+// Separate inquirer prompts depending on role etc. 
 
 
 
@@ -20,7 +20,7 @@ function promptUser(answers) {
             choices: ["Engineer", "Intern", "Manager"]
         },
     ]).then(function (res) {
-        // should use switch case instead of if/else starting here
+        
         console.log(res)
         if (res.role === "Engineer") {
             inquirer.prompt([
@@ -41,7 +41,7 @@ function promptUser(answers) {
                 }
             ]).then(function (engineerRes) {
                 var newEngineer = new Engineer(engineerRes.name, engineerRes.email, uniqueId, engineerRes.github);
-                uniqueId = uniqueId + 1; // could be "uniqueId++"
+                uniqueId = uniqueId + 1; 
                 console.log(newEngineer);
                 // run promptUser (called recursion) so that you can add multiple Engineers and id changes incrementally
                 teamArray.push(newEngineer);
@@ -68,7 +68,7 @@ function promptUser(answers) {
                 }
             ]).then(function (internRes) {
                 var newIntern = new Intern(internRes.name, internRes.email, uniqueId, internRes.school);
-                uniqueId = uniqueId + 1; // could be "uniqueId++"
+                uniqueId = uniqueId + 1; 
                 console.log(newIntern)
                 teamArray.push(newIntern);
                 addUser();
@@ -92,13 +92,13 @@ function promptUser(answers) {
                 }
             ]).then(function (managerRes) {
                 var newManager = new Manager(managerRes.name, managerRes.email, uniqueId, managerRes.office);
-                uniqueId = uniqueId + 1; // could be "uniqueId++"
+                uniqueId = uniqueId + 1; 
                 console.log(newManager);
                 teamArray.push(newManager);
                 addUser();
             });
         };
-        // should use switch case instead of if/else up until this point
+        
 
     })
         .catch(function (err) {
@@ -110,12 +110,8 @@ function promptUser(answers) {
 
 
 
-// will need to loop through teamArray and check each item and check and see if it is a mananger, intern or engineer
-// will need to check if it is a "manager, intern or engineer"
-// should use switch case here
-
 // create template in the HTML file and put in keywords as placeholders and then replace files
-// could also go through and creating html and writing it to a file
+
 function generateHTML() {
     // put html here
     
@@ -162,8 +158,3 @@ promptUser();
 // console.log(manager.getEmail());
 
 
-
-// will have a function for each employee type ex: renderIntern(),renderManager()
-// then you would add them all together and create a single HTML file under the output folder
-
-//Constructor classes are "models"
